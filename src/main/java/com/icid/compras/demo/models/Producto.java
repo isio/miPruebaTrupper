@@ -1,5 +1,7 @@
 package com.icid.compras.demo.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,9 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "producto")
-public class productos {
+@Table(name = "PRODUCTOS")
+public class Producto implements Serializable  {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProducto;
@@ -24,12 +28,10 @@ public class productos {
 	@Column(name = "activo")
 	private boolean activo;
 	
-	public productos() {
+	public Producto() {
 	}
 
-	public productos(Long idProducto, String clave, String descripcion, boolean activo) {
-		super();
-		this.idProducto = idProducto;
+	public Producto(String clave, String descripcion, boolean activo) {
 		this.clave = clave;
 		this.descripcion = descripcion;
 		this.activo = activo;
